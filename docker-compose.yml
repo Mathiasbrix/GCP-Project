@@ -1,0 +1,18 @@
+version: "3.9" # optional since v1.27.0
+services:
+  frontend:
+    build: ./Frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+  backend:
+    build: ./Backend
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - NODE_ENV=development
+      - MONGO_DB_CONNECTION_STRING=mongodb+srv://mongo:7pfDOKPWkCNTGBbG@gcpcluster.ikfqxxb.mongodb.net/?retryWrites=true&w=majority
+      - MONGO_DB_NAME=GCPCluster
+      - REDIS_URI=rediss://default:AVNS_ZD2V1xCFb5eB0KKcgSC@redis-2a63ea6d-mathiasbrix10-3a50.aivencloud.com:11866
